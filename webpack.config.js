@@ -1,18 +1,19 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const WebpackBundleAnalyzer = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 module.exports = {
   mode: "development",
   devtool: "eval",
   entry: {
     index: "./src/index.js",
-    print: "./src/print.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
-    publicPath: "/dist/",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -31,6 +32,7 @@ module.exports = {
     ],
   },
   plugins: [
+    // new WebpackBundleAnalyzer(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "development",
@@ -38,5 +40,8 @@ module.exports = {
   ],
   devServer: {
     contentBase: "./dist",
+  },
+  optimization: {
+    runtimeChunk: true,
   },
 };
