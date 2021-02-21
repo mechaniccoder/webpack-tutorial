@@ -4,10 +4,15 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  devtool: "eval",
+  entry: {
+    index: "./src/index.js",
+    print: "./src/print.js",
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
+    publicPath: "/dist/",
   },
   module: {
     rules: [
@@ -28,7 +33,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "Asset Management",
+      title: "development",
     }),
   ],
+  devServer: {
+    contentBase: "./dist",
+  },
 };

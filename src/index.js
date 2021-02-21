@@ -1,6 +1,7 @@
 import _ from "lodash";
 import "./style.css";
 import Icon from "./tdd.png";
+import print from "./print.js";
 
 function component() {
   const div = document.createElement("div");
@@ -11,6 +12,11 @@ function component() {
   const tddIcon = new Image();
   tddIcon.src = Icon;
   div.appendChild(tddIcon);
+
+  const btn = document.createElement("button");
+  btn.innerHTML = "Click";
+  btn.onclick = print;
+  div.appendChild(btn);
 
   return div;
 }

@@ -16,6 +16,8 @@
     "lodash": "^4.17.21"
   },
   "scripts": {
+    "start": "webpack serve --open",
+    "watch": "webpack --watch",
     "build": "webpack"
   }
 }
