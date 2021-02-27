@@ -1,23 +1,14 @@
-import "./style.css";
-import Icon from "./tdd.png";
+import _ from "lodash";
+import print from "./print";
 
 function getComponent() {
   const element = document.createElement("div");
 
-  return import("lodash").then(({default: _}) => {
-    const element = document.createElement("div");
-    element.classList.add("hello");
-    element.innerHTML = _.join(["hello", "world"], " ");
+  const text = _.join(["Hello", "World"], " ");
+  element.innerHTML = text;
+  element.onclick = print;
 
-    const icon = new Image();
-    icon.src = Icon;
-
-    element.appendChild(icon);
-
-    return element;
-  });
+  return element;
 }
 
-getComponent().then((element) => {
-  document.body.appendChild(element);
-});
+document.body.appendChild(getComponent());

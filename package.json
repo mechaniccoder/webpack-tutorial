@@ -20,6 +20,6 @@
   "scripts": {
     "start": "webpack serve --open",
     "watch": "webpack --watch",
-    "build": "webpack"
+    "build": "webpack --env NODE_ENV=local"
   }
 }
